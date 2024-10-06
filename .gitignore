@@ -12,7 +12,7 @@ backend/node_modules/
 
 # enviroments
 # backend/.env
-frontend/.env
+# frontend/.env
 
 # logs
 npm-debug.log*
