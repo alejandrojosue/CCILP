@@ -1,0 +1,13 @@
+---
+import ButtonLink from "../../../components/common/ButtonLink.astro";
+import List from "../../../components/common/List";
+import {IconPlus} from "../../../components/icons/Icons";
+import Layout from "../../../layouts/Layout.astro";
+---
+<Layout title="Constancias de Solvencia">
+ <ButtonLink link="/constancies/solvency/create">
+   <IconPlus width="20" height="20" />
+   Crear Nuevo
+ </ButtonLink>
+ <List type="constancia-solvencias" client:load/>
+</Layout>

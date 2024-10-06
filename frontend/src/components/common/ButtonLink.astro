@@ -1,0 +1,13 @@
+---
+interface Props{
+ link: string
+}
+
+const {link} = Astro.props
+---
+
+<a href={link} class="btn btn-outline-primary">
+ <span class="d-flex gap-1 align-items-center">
+  <slot/>
+ </span>
+</a>

@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emprendedors",
+  "info": {
+    "singularName": "emprendedor",
+    "pluralName": "emprendedors",
+    "displayName": "Emprendedor"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NombreCompleto": {
+      "type": "string",
+      "required": true
+    },
+    "DNI": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 13,
+      "maxLength": 13
+    },
+    "CorreoElectronico": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "Telefono": {
+      "type": "string",
+      "required": true
+    },
+    "Direccion": {
+      "type": "text",
+      "required": true
+    },
+    "FecNac": {
+      "type": "date",
+      "required": true
+    },
+    "Sexo": {
+      "type": "enumeration",
+      "enum": [
+        "M",
+        "F"
+      ],
+      "required": true,
+      "default": "M"
+    },
+    "programa": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::programa.programa"
+    },
+    "TieneEscritura": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "OtrosTramites": {
+      "type": "string"
+    }
+  }
+}

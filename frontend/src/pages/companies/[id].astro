@@ -1,0 +1,15 @@
+---
+import SingleCompany from "../../components/SingleCompany";
+import Layout from "../../layouts/Layout.astro";
+const token = Astro.cookies.get("jwt")?.value as string;
+const userId = Astro.cookies.get("id")?.value as string;
+
+if (!token || !userId) return Astro.redirect("/login");
+const {id} = Astro.params;
+if(!id) {
+ return Astro.response(404)
+}
+---
+<Layout title="">
+ <SingleCompany id={id} client:load/>
+</Layout>

@@ -1,0 +1,18 @@
+---
+import ButtonLink from "../../../components/common/ButtonLink.astro";
+import List from "../../../components/common/List";
+import {IconPlus} from "../../../components/icons/Icons";
+import Layout from "../../../layouts/Layout.astro";
+
+const token = Astro.cookies.get("jwt")?.value as string;
+const userId = Astro.cookies.get("id")?.value as string;
+
+if (!token || !userId) return Astro.redirect("/login");
+---
+<Layout title="Constancias de Renovación de Registro">
+ <ButtonLink link="/constancies/renewals/create">
+   <IconPlus width="20" height="20" />
+   Crear Nuevo
+ </ButtonLink>
+ <List type="constancia-renovacions" client:load/>
+</Layout>

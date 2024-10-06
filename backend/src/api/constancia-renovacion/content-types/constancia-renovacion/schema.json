@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "constancia_renovacions",
+  "info": {
+    "singularName": "constancia-renovacion",
+    "pluralName": "constancia-renovacions",
+    "displayName": "ConstanciaRenovacion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "empresa": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::empresa.empresa"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+---
+import { IconCertificate, IconHome, IconBuilding } from "./icons/Icons";
+import BtnLogOut from "./BtnLogOut";
+---
+
+<nav class="navbar bg-primary">
+ <div class="container-fluid">
+   <a class="navbar-brand text-white fw-bold d-flex align-items-center" href="/">CCILP</a>
+   <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+     <div class="offcanvas-header">
+       <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+     </div>
+     <div class="offcanvas-body">
+       <ul class="navbar-nav justify-content-end flex-grow-1">
+         <li class="nav-item p-2 custom-li d-flex border-bottom">
+           <a class="active text-decoration-none custom-a d-flex gap-1 align-items-center w-100" aria-current="page" href="/">
+            <IconHome width="25" height="25"/>Inicio</a>
+         </li>
+         <li class="nav-item p-2 custom-li d-flex border-bottom">
+          <a class="active text-decoration-none custom-a d-flex gap-1 align-items-center w-100" aria-current="page" href="/companies">
+           <IconBuilding width="25" height="25"/>Empresas</a>
+        </li>
+         <li class="nav-item p-2 custom-li d-flex border-bottom">
+          <a class="active text-decoration-none custom-a d-flex gap-1 align-items-center w-100" aria-current="page" href="/constancies/register">
+            
+            <IconCertificate width="25" height="25"/>Constancias de Registro</a>
+        </li>
+        <li class="nav-item p-2 custom-li d-flex border-bottom">
+          <a class="active text-decoration-none custom-a d-flex gap-1 align-items-center w-100 custom-a d-flex gap-1 align-items-center" aria-current="page" href="/constancies/renewals">
+            <IconCertificate width="25" height="25"/>Constancias de Renovación</a>
+        </li>
+        <li class="nav-item p-2 custom-li d-flex border-bottom">
+          <a class="active text-decoration-none custom-a d-flex gap-1 align-items-center w-100 custom-a d-flex gap-1 align-items-center" aria-current="page" href="/constancies/solvency">
+            <IconCertificate width="25" height="25"/>Constancias de Solvencia</a>
+        </li>
+        <li class="nav-item p-2 custom-li d-flex border-bottom">
+          <BtnLogOut client:load/>            
+        </li>
+       </ul>
+     </div>
+   </div>
+ </div>
+</nav>

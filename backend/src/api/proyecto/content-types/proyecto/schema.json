@@ -1,0 +1,114 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proyectos",
+  "info": {
+    "singularName": "proyecto",
+    "pluralName": "proyectos",
+    "displayName": "Proyecto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NombreComercial": {
+      "type": "string",
+      "required": true
+    },
+    "RTN": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 14,
+      "maxLength": 14
+    },
+    "Direccion": {
+      "type": "text",
+      "required": true
+    },
+    "Ciudad": {
+      "type": "string",
+      "required": true
+    },
+    "Telefono": {
+      "type": "string",
+      "required": true
+    },
+    "CorreoElectronico": {
+      "type": "email",
+      "required": true,
+      "unique": false
+    },
+    "Rubro": {
+      "type": "string",
+      "required": true
+    },
+    "TiempoOperar": {
+      "type": "enumeration",
+      "enum": [
+        "De 1 año",
+        "De 2-5 años",
+        "De 6 años o mas"
+      ],
+      "required": true
+    },
+    "NumeroEmpleados": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "NumeroMujeres": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "NumeroHombres": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "VentasMensuales": {
+      "type": "enumeration",
+      "enum": [
+        "De 500 - 3,000",
+        "De 3,001 - 6,000",
+        "De 6,001 - 10,000",
+        "De 10,001 en adelante"
+      ],
+      "required": true
+    },
+    "VentasAnuales": {
+      "type": "enumeration",
+      "enum": [
+        "De 10,000 - 30,000",
+        "De 30,001 - 60,000",
+        "De 60,001 - 80,000",
+        "De 80,001 en adelante"
+      ],
+      "required": true
+    },
+    "ProductosServicios": {
+      "type": "text",
+      "required": true
+    },
+    "emprendedor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::emprendedor.emprendedor"
+    },
+    "TipoNegocio": {
+      "type": "enumeration",
+      "enum": [
+        "Propio",
+        "Familiar",
+        "Sociedad"
+      ],
+      "required": true
+    },
+    "Afiliado": {
+      "type": "boolean",
+      "required": true
+    }
+  }
+}

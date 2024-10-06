@@ -1,0 +1,37 @@
+---
+import FormCompany from "../../components/common/FormCompany"
+import Layout from "../../layouts/Layout.astro"
+const token = Astro.cookies.get("jwt")?.value as string;
+const userId = Astro.cookies.get("id")?.value as string;
+
+if (!token || !userId) return Astro.redirect("/login");
+---
+
+<Layout title="Crear Empresa">
+  <FormCompany client:load/>
+
+  <script>
+   (() => {
+    "use strict";
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".needs-validation");
+    
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+         //@ts-ignore
+       if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+       }
+
+       form.classList.add("was-validated");
+      },
+      false,
+     );
+    });
+   })();
+  </script>
+</Layout>

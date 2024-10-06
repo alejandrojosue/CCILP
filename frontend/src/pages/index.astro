@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const token = Astro.cookies.get("jwt")?.value as string;
+const userId = Astro.cookies.get("id")?.value as string;
+
+if (!token || !userId) return Astro.redirect("/login");
+---
+<Layout title="Menú Principal" isMenu>
+	<div class="album py-5 bg-light">
+		<div class="container">
+
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+						<div class="col">
+							<div class="card shadow-sm overflow-hidden">
+								<img src="/assets/constances.jpg" height="300" alt="...">
+								<div class="card-body">
+												<h5 class="card-title text-truncate">Constancia de Registro</h5>
+												<p class="card-text">Certifica la inscripción oficial de una empresa o emprendedor en la CCILP.</p>
+												<div class="d-flex justify-content-between align-items-center">
+																<div class="btn-group">
+																				<a href="./constancies/register" class="btn btn-sm btn-outline-primary">Ver</a>
+																				<a href="./constancies/register/create" class="btn btn-sm btn-outline-primary">Crear</a>
+																</div>
+												</div>
+								</div>
+				</div>
+				
+						</div>
+						<div class="col">
+							<div class="card shadow-sm overflow-hidden">
+											<img src="/assets/constances.jpg" height="300" alt="">
+			
+											<div class="card-body">
+															<h5 class="card-title text-truncate">Constancia de Renovación de Registro</h5>
+															<p class="card-text">Acredita la renovación y vigencia del registro en la CCILP.</p>
+															<div class="d-flex justify-content-between align-items-center">
+																			<div class="btn-group">
+																							<a href="/constancies/renewals" class="btn btn-sm btn-outline-primary">Ver</a>
+																							<a href="/constancies/renewals/create" class="btn btn-sm btn-outline-primary">Crear</a>
+																			</div>
+															</div>
+											</div>
+							</div>
+			</div>
+			
+			<div class="col">
+							<div class="card shadow-sm overflow-hidden">
+											<img src="/assets/constances.jpg" height="300" alt="">
+			
+											<div class="card-body">
+															<h5 class="card-title text-truncate">Constancia de Solvencia</h5>
+															<p class="card-text">Certifica que una empresa o emprendedor está al día con sus obligaciones en la CCILP.</p>
+															<div class="d-flex justify-content-between align-items-center">
+																			<div class="btn-group">
+																				<a href="/constancies/solvency" class="btn btn-sm btn-outline-primary">Ver</a>
+																				<a href="/constancies/solvency/create" class="btn btn-sm btn-outline-primary">Crear</a>
+																			</div>
+															</div>
+											</div>
+							</div>
+			</div>
+			<div class="col">
+    <div class="card shadow-sm overflow-hidden">
+        <img src="/assets/company2.jfif" height="300" alt="">
+
+        <div class="card-body">
+            <h5 class="card-title text-truncate">Empresas</h5>
+            <p class="card-text">Mira todas las empresas afiliadas a la CCILP.</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="/companies" class="btn btn-sm btn-outline-primary">Ver</a>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-primary">Crear</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col">
+	<div class="card shadow-sm overflow-hidden">
+					<img src="/assets/admin2.jfif" height="300" alt="">
+
+					<div class="card-body">
+									<h5 class="card-title text-truncate">Administración</h5>
+									<p class="card-text">Administra funciones más avanzadas!</p>
+									<div class="d-flex justify-content-between align-items-center">
+													<div class="btn-group">
+																	<a href="http://localhost:1337/admin" target="_blanks" class="btn btn-sm btn-outline-primary">Visitar</a>
+													</div>
+									</div>
+					</div>
+	</div>
+</div>
+				</div>
+		</div>
+</div>
+</Layout>

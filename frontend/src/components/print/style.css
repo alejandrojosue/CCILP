@@ -1,0 +1,153 @@
+*{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+ line-height: 1.8em;
+}
+
+@page {
+ size: letter;
+}
+
+html,body {
+ font-family: Arial, sans-serif !important;
+}
+
+body{
+ display: flex;
+}
+
+html,body, footer{
+ position: absolute;
+}
+
+.document {
+ width: 792px;
+ min-width: 792px;
+ max-width: 792px;
+ height: 11in;
+ padding: 20px;
+}
+
+.document>img {
+ position: absolute;
+ z-index: -1;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ width: 600px;
+ opacity: .1;
+}
+
+header {
+ text-align: center;
+ margin-bottom: 40px;
+ line-height: 1em;
+ width: 100%;
+ top: 0;
+}
+
+.logo img {
+ height: 120px;
+ float: left;
+}
+
+.title h1 {
+ margin: 0;
+}
+
+.title p {
+ margin: 5px 0;
+}
+
+.content {
+ text-align: justify;
+}
+
+.content h2 {
+ text-align: center;
+ padding-bottom: 10px;
+}
+
+aside{ position: relative;}
+
+.content {
+ padding: 0px 100px;
+}
+
+.content p {
+ font-size: 1em;
+}
+
+footer {
+ text-align: center;
+ font-size: 13px;
+ bottom: 0;
+ line-height: 1.2em;
+}
+
+footer .signature { 
+ text-align: center;
+ display: flex;
+ justify-content: center;
+ padding-bottom: 40px;
+}
+
+footer .law {
+ padding: 0px 100px;
+}
+
+footer .validity {
+ font-weight: bold;
+ color: red;
+}
+
+footer .constancia {
+ font-weight: bold;
+}
+
+footer .contact {
+ margin: 10px 0;
+}
+
+footer .social {
+ width: 130px;
+ margin-right: 10px;
+}
+
+footer .social .social-images {
+ display: flex;
+ justify-content: space-between;
+}
+
+footer .social .social-images img {
+ width: 30px;
+ display: inline;
+}
+
+footer section {
+ display: flex;
+}
+
+button {
+ display: block;
+ margin: 20px auto;
+ padding: 10px 20px;
+ font-size: 16px;
+ cursor: pointer;
+}
+
+@media print {
+ @page {
+  margin: 0in;
+  padding: 0;
+  height: 11in;
+  max-height: 11in;
+  min-height: 11in;
+  width: 8.5in;
+ }
+
+ #btnPrint{
+  display: none;
+ }
+}

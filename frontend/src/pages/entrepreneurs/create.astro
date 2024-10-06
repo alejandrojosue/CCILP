@@ -1,0 +1,168 @@
+---
+import Toast from "../../components/Toast.astro";
+import Layout from "../../layouts/Layout.astro";
+import { dateTimeFormat } from "../../util/dateTimeFormat";
+const token = Astro.cookies.get("jwt")?.value as string;
+const userId = Astro.cookies.get("id")?.value as string;
+
+if (!token || !userId) return Astro.redirect("/login");
+---
+
+<Layout title="Crear Emprendedor">
+  <form class="row g-3 needs-validation" novalidate>
+    <div class="col-12">
+      <span class="fw-bold"
+        >Fecha de Registro: {dateTimeFormat(new Date() + "")}</span
+      >
+    </div>
+    <!-- INICIO SECCION 1 -->
+    <div class="col-12">
+      <input type="checkbox" checked class="form-check-input" />
+      <label class="form-check-label" for="validationFormCheck1">Activo </label>
+    </div>
+
+    <!-- NOMBRE COMPLETO -->
+    <div class="col-md-8">
+      <label for="validationCustomUsername" class="form-label"
+        >Nombre Completo</label
+      >
+      <div class="input-group has-validation">
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustomUsername"
+          aria-describedby="inputGroupPrepend"
+          required
+        />
+        <div class="invalid-feedback">Por favor, ingrese el nombre!</div>
+      </div>
+    </div>
+    <!-- DNI -->
+    <div class="col-md-4">
+      <label for="validationCustom03" class="form-label">DNI</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationCustom03"
+        pattern="[0-9]{13}"
+        placeholder="xxxxxxxxxxxxx"
+        minlength="13"
+        maxlength="13"
+        required
+      />
+      <div class="invalid-feedback">Por favor, ingrese el DNI válido!</div>
+    </div>
+
+    <!-- DIRECCION -->
+    <div class="col-md-12">
+      <label for="validationCustom03" class="form-label">Dirección Exacta</label
+      >
+      <textarea class="form-control" id="validationTextarea" required
+      ></textarea>
+      <div class="invalid-feedback">
+        Por favor, ingrese una dirección válida!
+      </div>
+    </div>
+
+    <!-- TELEFONO -->
+    <div class="col-md-3">
+      <label for="validationCustom05" class="form-label">Teléfono</label>
+      <input
+        type="text"
+        pattern="[0-9]{8}"
+        class="form-control"
+        id="validationCustom05"
+        required
+      />
+      <div class="invalid-feedback">Por favor, ingrese un teléfono válido!</div>
+    </div>
+    <!-- SEXO -->
+    <div class="col-md-3">
+      <label for="validationCustom10" class="form-label">Sexo</label>
+      <select class="form-select" id="validationCustom10" required>
+        <option selected disabled value="">Elegir...</option>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
+      </select>
+      <div class="invalid-feedback">Por favor, seleccione un sexo!</div>
+    </div>
+    <!-- CORREO -->
+    <div class="col-md-3">
+      <label for="validationCustom05" class="form-label"
+        >Correo Electrónico</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        id="validationCustom05"
+        required
+      />
+      <div class="invalid-feedback">Por favor, ingrese el correo!</div>
+    </div>
+    <!-- PROGRAMA -->
+    <div class="col-md-3">
+      <label for="validationCustom10" class="form-label">Programa</label>
+      <select class="form-select" id="validationCustom10" required>
+        <option selected disabled value="">Elegir...</option>
+        <option value="1">Terra Te Impulsa</option>
+        <option value="2">Formación Empresarial</option>
+        <option value="3">ImpulsoHN</option>
+        <option value="4">Generación con Oportunidades</option>
+        <option value="5">TSM Negocios Concientes</option>
+        <option value="6">Digital HUB504</option>
+      </select>
+      <div class="invalid-feedback">Por favor, seleccione un programa!</div>
+    </div>
+    <!-- TIENE ESCRITURA -->
+    <div class="col-md-2">
+      <input type="checkbox" class="form-check-input" />
+      <label class="form-check-label" for="validationFormCheck1"
+        >Tiene Escritura
+      </label>
+    </div>
+    <!-- OTROS TRAMITES -->
+    <div class="col-md-12">
+      <label for="validationCustom05" class="form-label">Otros Trámites</label>
+      <input type="email" class="form-control" id="validationCustom05" />
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary liveToastBtn" type="submit"
+        >Guardar Registro</button
+      >
+    </div>
+    <Toast title="Emprendedores" message="Emprendedor creado exitósamente!" />
+    <script>
+      (() => {
+        "use strict";
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll(".needs-validation");
+        const toastTrigger = document.querySelector(".liveToastBtn");
+        const toastLiveExample = document.querySelector(".toast");
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              event.preventDefault();
+              //@ts-ignore
+              if (!form.checkValidity()) {
+                event.stopPropagation();
+              }
+              if (toastTrigger) {
+                toastTrigger.addEventListener("click", () => {
+                  // @ts-ignore
+                  const toast = new bootstrap.Toast(toastLiveExample);
+
+                  toast.show();
+                });
+              }
+              form.classList.add("was-validated");
+            },
+            false,
+          );
+        });
+      })();
+    </script>
+  </form>
+</Layout>

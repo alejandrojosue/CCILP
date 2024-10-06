@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bitacoras",
+  "info": {
+    "singularName": "bitacora",
+    "pluralName": "bitacoras",
+    "displayName": "Bitacora",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "Descripcion": {
+      "type": "string",
+      "required": true
+    },
+    "Accion": {
+      "type": "enumeration",
+      "enum": [
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "required": true
+    },
+    "Datos": {
+      "type": "json",
+      "required": true
+    },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}

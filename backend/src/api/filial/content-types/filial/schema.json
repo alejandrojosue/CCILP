@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "filials",
+  "info": {
+    "singularName": "filial",
+    "pluralName": "filials",
+    "displayName": "Filial"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Filial": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

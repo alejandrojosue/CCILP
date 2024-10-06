@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "configs",
+  "info": {
+    "singularName": "config",
+    "pluralName": "configs",
+    "displayName": "Config",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Director": {
+      "type": "string",
+      "required": true
+    },
+    "Telefonos": {
+      "type": "string",
+      "required": true
+    },
+    "Direccion": {
+      "type": "text",
+      "required": true
+    },
+    "CorreosElectronicos": {
+      "type": "text",
+      "required": true
+    },
+    "Website": {
+      "type": "string"
+    }
+  }
+}

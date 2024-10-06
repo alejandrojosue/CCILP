@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "soporte_tecnicos",
+  "info": {
+    "singularName": "soporte-tecnico",
+    "pluralName": "soporte-tecnicos",
+    "displayName": "SoporteTecnico",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FechaExpiracion": {
+      "type": "date",
+      "required": true
+    },
+    "FechaPagada": {
+      "type": "date",
+      "required": true
+    },
+    "Costo": {
+      "type": "decimal",
+      "required": true
+    },
+    "Estado": {
+      "type": "enumeration",
+      "enum": [
+        "PENDIENTE",
+        "EN PROCESO",
+        "FINALIZADO"
+      ],
+      "required": true,
+      "default": "FINALIZADO"
+    },
+    "Notas": {
+      "type": "richtext"
+    }
+  }
+}
