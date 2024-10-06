@@ -11,8 +11,8 @@ frontend/node_modules/
 backend/node_modules/
 
 # enviroments
-# backend/.env
-# frontend/.env
+backend/.env
+frontend/.env
 
 # logs
 npm-debug.log*
@@ -28,4 +28,4 @@ pnpm-debug.log*
 
 # another
 backend/.strapi-updater.json
-# frontend/astro.config.mjs
+frontend/astro.config.mjs
