@@ -11,8 +11,8 @@ frontend/node_modules/
 backend/node_modules/
 
 # enviroments
-backend/.env
-frontend/.env
+# backend/.env
+# frontend/.env
 
 # logs
 npm-debug.log*
