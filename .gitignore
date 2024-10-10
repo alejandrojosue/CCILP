@@ -33,3 +33,4 @@ pnpm-debug.log*
 # another
 backend/.strapi-updater.json
 frontend/astro.config.mjs
+backend/public/uploads/*.*
