@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { PUBLIC_STRAPI_HOST_BASE } from "../env/config";
 
 const token = Astro.cookies.get("jwt")?.value as string;
 const userId = Astro.cookies.get("id")?.value as string;
@@ -85,7 +86,7 @@ if (!token || !userId) return Astro.redirect("/login");
 									<p class="card-text">Administra funciones más avanzadas!</p>
 									<div class="d-flex justify-content-between align-items-center">
 													<div class="btn-group">
-																	<a href="http://localhost:1337/admin" target="_blanks" class="btn btn-sm btn-outline-primary">Visitar</a>
+																	<a href={PUBLIC_STRAPI_HOST_BASE + '/admin'} target="_blanks" class="btn btn-sm btn-outline-primary">Visitar</a>
 													</div>
 									</div>
 					</div>
