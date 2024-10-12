@@ -51,7 +51,7 @@
     },
     "CorreoElectronico": {
       "type": "email",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "RTN": {

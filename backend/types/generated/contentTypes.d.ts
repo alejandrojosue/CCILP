@@ -1115,7 +1115,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
         minLength: 8;
         maxLength: 8;
       }>;
-    CorreoElectronico: Attribute.Email & Attribute.Required & Attribute.Unique;
+    CorreoElectronico: Attribute.Email & Attribute.Unique;
     RTN: Attribute.String &
       Attribute.Required &
       Attribute.Unique &
