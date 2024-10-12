@@ -10,8 +10,8 @@ export default class SupportRepository {
       const {FechaExpiracion, Estado} = dataSupport.data.attributes
       console.log({FechaExpiracion, now});
       const nowYear = now.split('/')[2]
-      const nowMonth = now.split('/')[1]
-      const nowDay = now.split('/')[0]
+      const nowMonth = now.split('/')[0]
+      const nowDay = now.split('/')[1]
       const FechaExpiracionYear = FechaExpiracion.split('-')[0]
       const FechaExpiracionMonth = FechaExpiracion.split('-')[1]
       const FechaExpiracionDay = FechaExpiracion.split('-')[2]
