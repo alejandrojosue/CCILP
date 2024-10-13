@@ -6,6 +6,7 @@ const userId = Astro.cookies.get("id")?.value as string;
 
 if (!token || !userId) return Astro.redirect("/login");
 const {id} = Astro.params;
+
 if(!id) {
  return Astro.response(404)
 }

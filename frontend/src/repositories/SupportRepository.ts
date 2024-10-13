@@ -5,10 +5,8 @@ export default class SupportRepository {
    const days = 10
    let msg = null
     try {
-      const [dataSupport, {sysDate:now}] = await Promise.all([fetchDataFromAPI({url: '/soporte-tecnico'}), fetchDataFromAPI({url: '/soporte-tecnico/systemDate'})])
-
-      const {FechaExpiracion, Estado} = dataSupport.data.attributes
-      console.log({FechaExpiracion, now});
+      const [dataSupport, {sysDate:now}] = await Promise.all([fetchDataFromAPI({url: '/soporte-tecnico'}), fetchDataFromAPI({url: '/soporte-tecnico/systemDate'})]);
+      const {FechaExpiracion} = dataSupport.data.attributes
       const nowYear = now.split('/')[2]
       const nowMonth = now.split('/')[0]
       const nowDay = now.split('/')[1]

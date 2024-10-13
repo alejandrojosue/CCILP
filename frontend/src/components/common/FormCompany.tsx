@@ -10,7 +10,6 @@ export default function FormCompany() {
   })()
  }, []);
  useEffect(() => {
-  console.log(fields);
  }, [fields.loading])
 
 

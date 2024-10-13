@@ -6,6 +6,8 @@ export default function SingleCompany({ id }: { id: string }) {
  const { data, getById } = useCompany()
  useEffect(() => {
   getById(id)
+  console.log(data);
+  
  }, [])
  useEffect(() => {
   document.title = data.empresas[0]?.NombreComercial

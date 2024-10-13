@@ -83,7 +83,6 @@ export const useCompany = () => {
                 }));
     } catch (error) {
       setFields(prev => ({...prev, error: error as Error}))
-      console.log(fields);
     }finally{
      setFields(prev=>({...prev, loading: false}))
     }

@@ -4,7 +4,7 @@ import {MAX_RETRIES, PUBLIC_STRAPI_HOST} from '../env/config'
  * Realiza una solicitud a la API y devuelve los datos.
  * @param {string} url - La ruta de la API a la que se realizará la solicitud.
  * @param {string} method - El método HTTP de la solicitud (por defecto 'GET').
- * @param {object} data - Los datos a enviar en el cuerpo de la solicitud (para
+ * @param {Object} data - Los datos a enviar en el cuerpo de la solicitud (para
  *     POST y PUT).
  * @returns {Promise} Una promesa que resuelve en los datos de la respuesta de
  *     la API.
@@ -12,7 +12,7 @@ import {MAX_RETRIES, PUBLIC_STRAPI_HOST} from '../env/config'
  */
 export const fetchDataFromAPI =
     async({url, method = 'GET', data, token}:
-              {url: string, method?: string, data?: object, token?: string}):
+              {url: string, method?: string, data?: Object, token?: string}):
         Promise<any> => {
           let retries = 0;
           let errorResponse: Error|null = null;
