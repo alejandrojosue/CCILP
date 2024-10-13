@@ -2,7 +2,8 @@
 // import { useCompany } from "../../hooks/useCompany";
 // import { dateTimeFormat } from "../../util/dateTimeFormat";
 
-// export default function FormCompany() {
+export default function FormCompany() {
+ return <></>
 //  const { fields, getFields } = useCompany()
 //  useEffect(() => {
 //   (async () => {
@@ -470,4 +471,4 @@
 //   </form>
 //  </>)
 
-// }
+}
