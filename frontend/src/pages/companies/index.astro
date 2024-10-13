@@ -6,7 +6,6 @@ const userId = Astro.cookies.get("id")?.value as string;
 
 if (!token || !userId) return Astro.redirect("/login");
 ---
-
 <Layout title="Empresas Registradas">
   <List client:load/>
 </Layout>

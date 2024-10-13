@@ -18,7 +18,7 @@ export default function SingleCompany({ id }: { id: string }) {
   <form className="row g-3 needs-validation" noValidate>
    <div className="col-12">
     <span className="fw-bold"
-    >Fecha de Registro y Afiliación: {data.empresas[0]?.FechaConstitucion.toString()}</span>
+    >Fecha de Registro y Afiliación: {data.empresas[0]?.FechaConstitucion + ''}</span>
    </div>
    {/* INICIO SECCION 1*/}
    <div className="col-md-12">

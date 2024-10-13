@@ -25,6 +25,7 @@ export default function List(){
         value={filter}
         onChange={(e) => setFilter(e.target.value)}  // Actualizar el estado del filtro
       />
+      
   <DataTable columns={COLUMNS_COMPANIES}
   rows={filteredCompanies} loading={data.loading} />
   </>
