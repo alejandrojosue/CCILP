@@ -1591,16 +1591,6 @@
     qs "6.11.1"
     sift "16.0.1"
 
-"@strapi/plugin-cloud@4.25.6":
-  version "4.25.6"
-  resolved "https://registry.npmjs.org/@strapi/plugin-cloud/-/plugin-cloud-4.25.6.tgz"
-  integrity sha512-8rK/B3QRtlRIxT120kUNdEKUMMim37Y20l/NJI++3YxN8Tc4I4NBoRpBK5JWSdLWYD5QC1/RpmYHXkpOJSyEJA==
-  dependencies:
-    "@strapi/design-system" "1.19.0"
-    "@strapi/helper-plugin" "4.25.6"
-    "@strapi/icons" "1.19.0"
-    react-intl "6.4.1"
-
 "@strapi/plugin-content-manager@4.25.6":
   version "4.25.6"
   resolved "https://registry.npmjs.org/@strapi/plugin-content-manager/-/plugin-content-manager-4.25.6.tgz"
@@ -1754,7 +1744,7 @@
     "@strapi/utils" "4.25.6"
     fs-extra "10.0.0"
 
-"@strapi/strapi@^4.0.0", "@strapi/strapi@^4.0.5", "@strapi/strapi@^4.15.1", "@strapi/strapi@^4.3.4", "@strapi/strapi@^4.4.0", "@strapi/strapi@4.25.6":
+"@strapi/strapi@^4.0.0", "@strapi/strapi@^4.0.5", "@strapi/strapi@^4.15.1", "@strapi/strapi@^4.3.4", "@strapi/strapi@4.25.6":
   version "4.25.6"
   resolved "https://registry.npmjs.org/@strapi/strapi/-/strapi-4.25.6.tgz"
   integrity sha512-HvZazCcTzWv03X+/rib0YvkozoBr62pW2O4IRyUwDTJBAIzYL9eIpNOR5ejNL+E1GymAKIm2bYJcSzvIxNLKoA==
