@@ -62,7 +62,7 @@ export default function PrintConstancy() {
                         {/* @ts-ignore */}
                         {params?.title === 'RENOVACIÓN DE REGISTRO' ? ' hizo Renovación de Registro según Artículo 31 de la Ley de Cámaras de Comercio, ' : ''}
                         {/* @ts-ignore */}
-                        se encuentra registrada {params?.title === 'SOLVENCIA' ? ' y afiliada ' : ''} en esta Cámara de Comercio, Bajo el Registro {(params?.tipoDenominacion + '').substring(1, 3)}-{params?.numeroRegistro}, Folio {params?.folio}, Tomo {params?.tomo}.
+                        se encuentra Registrada {params?.title === 'SOLVENCIA' ? ' y Afiliada ' : ''} en esta Cámara de Comercio, Bajo el Registro {(params?.tipoDenominacion + '').substring(1, 3)}-{params?.numeroRegistro}, Folio {params?.folio}, Tomo {params?.tomo}.
                         {/* @ts-ignore */}
                         <br />Razón Social o Denominación:<br /><b>{params?.tipoDenominacion}</b>
                         {/* {params?.title === 'REGISTRO' ? <> 
