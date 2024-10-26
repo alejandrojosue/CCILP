@@ -111,7 +111,7 @@
     "TomoMercantil": {
       "type": "integer",
       "required": false,
-      "unique": true
+      "unique": false
     },
     "FechaMercantil": {
       "type": "date",

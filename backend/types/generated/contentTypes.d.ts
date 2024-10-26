@@ -1141,7 +1141,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
     NumeroEscritura: Attribute.String & Attribute.Unique;
     FechaConstitucion: Attribute.Date;
     RegistroMercantil: Attribute.Integer;
-    TomoMercantil: Attribute.Integer & Attribute.Unique;
+    TomoMercantil: Attribute.Integer;
     FechaMercantil: Attribute.Date;
     LugarDeclaracion: Attribute.String;
     NumeroEmpleados: Attribute.Integer &
