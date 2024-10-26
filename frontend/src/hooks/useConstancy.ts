@@ -45,15 +45,13 @@ export default function useConstancy(type: string) {
       async ({idCompany, href}: {idCompany: number, href: string}) => {
     try {
       setData(prev => ({...prev, loading: true}));
-      // const data = await fetchDataFromAPI({
-      //   url: `/${type}`,
-      //   method: 'POST',
-      //   data: {data: {empresa: {id: idCompany}, user: {id: getCookie('id')}}},
-      //   token: getCookie('jwt')
-      // });
-      // window.open(href+'&constancyID='+data.data.id, '_blank')
-      window.open(href+'&constancyID=1', '_blank')
-
+      const data = await fetchDataFromAPI({
+        url: `/${type}`,
+        method: 'POST',
+        data: {data: {empresa: {id: idCompany}, user: {id: getCookie('id')}}},
+        token: getCookie('jwt')
+      });
+      window.open(href+'&constancyID='+data.data.id, '_blank')
     } catch (err) {
       setData(prev => ({...prev, error: err as Error}))
     } finally {
