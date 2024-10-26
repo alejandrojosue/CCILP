@@ -26,7 +26,12 @@ export const COLUMNS_COMPANIES = [
     sortable: false,
     align: 'center',
     width: 110,
-  }];
+  },
+  { 
+    field: 'tipo_tramite', 
+    headerName: 'Tipo de Trámite',
+    width: 150,
+  },];
 
   export const COLUMNS_CONSTANCE = [
     { field: 'id', headerName: 'No. Constancia', sortable: false, width: 180 },
