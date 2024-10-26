@@ -36,19 +36,19 @@ export const fetchDataFromAPI =
               const response =
                   await fetch(PUBLIC_STRAPI_HOST + url, requestOptions);
               const errorList: {[key: string]: () => void} = {
-                'Bad Request': () => {
+                '400': () => {
                   throw new Error('Datos no válidos')
                 },
-                Unauthorized: () => {
+                '401': () => {
                   throw new Error('Acceso Denegado')
                 },
-                Forbidden: () => {
+                '403': () => {
                   throw new Error('Acceso Denegado')
                 },
-                'Not Found': () => {
+                '404': () => {
                   throw new Error('Recurso no encontrado')
                 },
-                'Internal Server Error': () => {
+                '500': () => {
                   throw new Error('Ha ocurrido un error en el servidor')
                 },
                 'Failed to fetch': () => {
@@ -57,8 +57,8 @@ export const fetchDataFromAPI =
               };
 
               if (!response.ok) {
-                if (errorList[response.statusText])
-                  errorList[response.statusText]();
+                if (errorList[response.status])
+                  errorList[response.status]();
                 else
                   throw new Error(response.statusText);
               }

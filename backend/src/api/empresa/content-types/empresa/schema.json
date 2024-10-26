@@ -57,7 +57,7 @@
     "RTN": {
       "type": "string",
       "required": true,
-      "unique": true,
+      "unique": false,
       "minLength": 14,
       "maxLength": 14
     },
@@ -65,8 +65,8 @@
       "type": "enumeration",
       "enum": [
         "Micro",
-        "Mediana",
         "Pequeña",
+        "Mediana",
         "Grande",
         "Exenta de Impuestos"
       ],
@@ -96,8 +96,7 @@
       "type": "text"
     },
     "NumeroEscritura": {
-      "type": "integer",
-      "required": false,
+      "type": "string",
       "unique": true
     },
     "FechaConstitucion": {

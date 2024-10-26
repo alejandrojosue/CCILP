@@ -1034,6 +1034,7 @@ export interface ApiEmprendedorEmprendedor extends Schema.CollectionType {
     singularName: 'emprendedor';
     pluralName: 'emprendedors';
     displayName: 'Emprendedor';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1047,7 +1048,7 @@ export interface ApiEmprendedorEmprendedor extends Schema.CollectionType {
         minLength: 13;
         maxLength: 13;
       }>;
-    CorreoElectronico: Attribute.Email & Attribute.Required & Attribute.Unique;
+    CorreoElectronico: Attribute.Email & Attribute.Unique;
     Telefono: Attribute.String & Attribute.Required;
     Direccion: Attribute.Text & Attribute.Required;
     FecNac: Attribute.Date & Attribute.Required;
@@ -1118,13 +1119,12 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
     CorreoElectronico: Attribute.Email & Attribute.Unique;
     RTN: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         minLength: 14;
         maxLength: 14;
       }>;
     Clasificacion: Attribute.Enumeration<
-      ['Micro', 'Mediana', 'Peque\u00F1a', 'Grande', 'Exenta de Impuestos']
+      ['Micro', 'Peque\u00F1a', 'Mediana', 'Grande', 'Exenta de Impuestos']
     > &
       Attribute.Required;
     NombreRepresentante: Attribute.String & Attribute.Required;
@@ -1138,7 +1138,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
     > &
       Attribute.Required;
     NombreSocios: Attribute.Text;
-    NumeroEscritura: Attribute.Integer & Attribute.Unique;
+    NumeroEscritura: Attribute.String & Attribute.Unique;
     FechaConstitucion: Attribute.Date;
     RegistroMercantil: Attribute.Integer;
     TomoMercantil: Attribute.Integer & Attribute.Unique;

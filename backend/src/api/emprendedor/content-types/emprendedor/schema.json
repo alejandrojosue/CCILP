@@ -4,7 +4,8 @@
   "info": {
     "singularName": "emprendedor",
     "pluralName": "emprendedors",
-    "displayName": "Emprendedor"
+    "displayName": "Emprendedor",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -24,7 +25,7 @@
     },
     "CorreoElectronico": {
       "type": "email",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "Telefono": {
