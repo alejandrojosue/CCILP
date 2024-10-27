@@ -52,7 +52,7 @@
     "CorreoElectronico": {
       "type": "email",
       "required": false,
-      "unique": true
+      "unique": false
     },
     "RTN": {
       "type": "string",

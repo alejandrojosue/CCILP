@@ -26,7 +26,7 @@
     "CorreoElectronico": {
       "type": "email",
       "required": false,
-      "unique": true
+      "unique": false
     },
     "Telefono": {
       "type": "string",

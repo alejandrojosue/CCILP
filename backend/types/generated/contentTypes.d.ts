@@ -1048,7 +1048,7 @@ export interface ApiEmprendedorEmprendedor extends Schema.CollectionType {
         minLength: 13;
         maxLength: 13;
       }>;
-    CorreoElectronico: Attribute.Email & Attribute.Unique;
+    CorreoElectronico: Attribute.Email;
     Telefono: Attribute.String & Attribute.Required;
     Direccion: Attribute.Text & Attribute.Required;
     FecNac: Attribute.Date & Attribute.Required;
@@ -1116,7 +1116,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
         minLength: 8;
         maxLength: 8;
       }>;
-    CorreoElectronico: Attribute.Email & Attribute.Unique;
+    CorreoElectronico: Attribute.Email;
     RTN: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
