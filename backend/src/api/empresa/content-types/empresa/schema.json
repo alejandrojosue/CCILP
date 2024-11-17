@@ -97,7 +97,7 @@
     },
     "NumeroEscritura": {
       "type": "string",
-      "unique": true
+      "unique": false
     },
     "FechaConstitucion": {
       "type": "date",
