@@ -55,9 +55,9 @@ export default function PrintConstancy() {
                     <h2>CONSTANCIA DE {params?.title}</h2>
                     <p>El Suscrito Director Ejecutivo de la Cámara de Comercio e Industrias de La Paz (CCILP), por medio de la presente
                         {/* @ts-ignore */}
-                        <b> HACE CONSTAR QUE:</b> La Empresa o Negocio: <b><u>**{(params?.nombreEmpresa)}**</u> </b>
+                        <b> HACE CONSTAR QUE:</b> La Empresa o Negocio: <b><u>**{(params?.nombreEmpresa?.trim())}**</u> </b>
                         {/* @ts-ignore */}
-                        y Nombre Comercial: <b><u>**{(params?.nombreComercial)}** </u></b>
+                        y Nombre Comercial: <b><u>**{(params?.nombreComercial?.trim())}**</u></b>
                         {/* {params?.title === 'REGISTRO' ? <> </> : ' '} */}
                         {/* @ts-ignore */}
                         {params?.title === 'RENOVACIÓN DE REGISTRO' ? ' hizo Renovación de Registro según Artículo 31 de la Ley de Cámaras de Comercio, ' : ''}
@@ -69,9 +69,9 @@ export default function PrintConstancy() {
                          </> : ''} */}
                         <br />
                         {/* @ts-ignore */}
-                        Con RTN No. {params?.rtn} {params?.title === 'SOLVENCIA' ? 'está Solvente en el Pago de sus Obligaciones,' : ''} siendo su Gerente, Propietario o Representante Legal <b><u>{(params?.representanteLegal)}.-</u></b>.</p>
+                        Con RTN No. {params?.rtn} {params?.title === 'SOLVENCIA' ? 'está Solvente en el Pago de sus Obligaciones,' : ''} siendo su Gerente, Propietario o Representante Legal <b><u>{(params?.representanteLegal?.trim())}</u></b>.</p>
                     <br />
-                    <p>Y, para los fines que al interesado (a) estime conveniente se le extiende la presente en la ciudad de La Paz, departamento de La Paz, a los {(new Date()).getDate()} días del mes de {months[new Date().getMonth()]} del 2024.</p>
+                    <p>Y, para los fines que al interesado (a) estime conveniente se le extiende la presente en la ciudad de La Paz, departamento de La Paz, a los {(new Date()).getDate()} días del mes de {months[new Date().getMonth()]} del {new Date().getFullYear()}.</p>
                 </section>
             </aside>
             <footer>
