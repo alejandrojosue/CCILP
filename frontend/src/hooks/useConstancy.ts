@@ -30,7 +30,7 @@ export default function useConstancy(type: string) {
     try {
       setData(prev => ({...prev, loading: true}))
       const value = await fetchDataFromAPI({
-        url: `/empresas?filters[$and][0][RTN][$eq]=${rtn}&populate=*`,
+        url: `/empresas?filters[$and][0][RTN][$eq]=${rtn}&filters[$and][1][Activo][$eq]=true&populate=*`,
         token: getCookie('jwt')
       });
         setCompanies(CompaniesMap(value.data));
