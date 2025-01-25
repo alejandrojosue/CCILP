@@ -836,7 +836,7 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
   info: {
     singularName: 'categoria';
     pluralName: 'categorias';
-    displayName: 'Categoria';
+    displayName: 'Categor\u00EDas';
     description: '';
   };
   options: {
@@ -901,7 +901,7 @@ export interface ApiConstanciaRegistroConstanciaRegistro
   info: {
     singularName: 'constancia-registro';
     pluralName: 'constancia-registros';
-    displayName: 'ConstanciaRegistro';
+    displayName: 'Constancias de Registro';
   };
   options: {
     draftAndPublish: false;
@@ -936,7 +936,7 @@ export interface ApiConstanciaRenovacionConstanciaRenovacion
   info: {
     singularName: 'constancia-renovacion';
     pluralName: 'constancia-renovacions';
-    displayName: 'ConstanciaRenovacion';
+    displayName: 'Constancias de Renovaci\u00F3n';
     description: '';
   };
   options: {
@@ -971,7 +971,7 @@ export interface ApiConstanciaSolvenciaConstanciaSolvencia
   info: {
     singularName: 'constancia-solvencia';
     pluralName: 'constancia-solvencias';
-    displayName: 'ConstanciaSolvencia';
+    displayName: 'Constancias de Solvencia';
   };
   options: {
     draftAndPublish: false;
@@ -1004,7 +1004,7 @@ export interface ApiDenominacionDenominacion extends Schema.CollectionType {
   info: {
     singularName: 'denominacion';
     pluralName: 'denominacions';
-    displayName: 'Denominacion';
+    displayName: 'Denominaciones';
   };
   options: {
     draftAndPublish: false;
@@ -1033,7 +1033,7 @@ export interface ApiEmprendedorEmprendedor extends Schema.CollectionType {
   info: {
     singularName: 'emprendedor';
     pluralName: 'emprendedors';
-    displayName: 'Emprendedor';
+    displayName: 'Emprendedores';
     description: '';
   };
   options: {
@@ -1086,7 +1086,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
   info: {
     singularName: 'empresa';
     pluralName: 'empresas';
-    displayName: 'Empresa';
+    displayName: 'Empresas';
     description: '';
   };
   options: {
@@ -1235,7 +1235,7 @@ export interface ApiFilialFilial extends Schema.CollectionType {
   info: {
     singularName: 'filial';
     pluralName: 'filials';
-    displayName: 'Filial';
+    displayName: 'Filiales';
   };
   options: {
     draftAndPublish: false;
@@ -1264,7 +1264,7 @@ export interface ApiProgramaPrograma extends Schema.CollectionType {
   info: {
     singularName: 'programa';
     pluralName: 'programas';
-    displayName: 'Programa';
+    displayName: 'Programas';
   };
   options: {
     draftAndPublish: false;
@@ -1293,7 +1293,7 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
   info: {
     singularName: 'proyecto';
     pluralName: 'proyectos';
-    displayName: 'Proyecto';
+    displayName: 'Proyectos';
     description: '';
   };
   options: {
@@ -1390,7 +1390,7 @@ export interface ApiRamaRama extends Schema.CollectionType {
   info: {
     singularName: 'rama';
     pluralName: 'ramas';
-    displayName: 'Rama';
+    displayName: 'Ramas';
   };
   options: {
     draftAndPublish: false;
@@ -1412,7 +1412,7 @@ export interface ApiSectorDesempenoSectorDesempeno
   info: {
     singularName: 'sector-desempeno';
     pluralName: 'sector-desempenos';
-    displayName: 'SectorDesempeno';
+    displayName: 'Sectores de Desempe\u00F1o';
   };
   options: {
     draftAndPublish: false;
@@ -1477,7 +1477,7 @@ export interface ApiTipoTramiteTipoTramite extends Schema.CollectionType {
   info: {
     singularName: 'tipo-tramite';
     pluralName: 'tipo-tramites';
-    displayName: 'TipoTramite';
+    displayName: 'Tipos de Tr\u00E1mite';
   };
   options: {
     draftAndPublish: false;

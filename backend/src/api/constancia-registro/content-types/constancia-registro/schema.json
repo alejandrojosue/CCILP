@@ -4,7 +4,7 @@
   "info": {
     "singularName": "constancia-registro",
     "pluralName": "constancia-registros",
-    "displayName": "ConstanciaRegistro"
+    "displayName": "Constancias de Registro"
   },
   "options": {
     "draftAndPublish": false

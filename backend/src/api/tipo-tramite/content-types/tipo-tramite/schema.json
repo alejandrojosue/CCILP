@@ -4,7 +4,7 @@
   "info": {
     "singularName": "tipo-tramite",
     "pluralName": "tipo-tramites",
-    "displayName": "TipoTramite"
+    "displayName": "Tipos de Trámite"
   },
   "options": {
     "draftAndPublish": false
