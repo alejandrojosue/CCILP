@@ -66,7 +66,7 @@ export interface Empresa{
  ActividadEmpresarial: string,
  CapitalMaximo: number,
  sector_desempenos: Partial<SectorDesempeno>[],
- NumeroRegistro: number,
+ NumeroRegistro: string,
  FOLIO: number,
  TOMO: string,
  categoria: Partial<Categoria>,

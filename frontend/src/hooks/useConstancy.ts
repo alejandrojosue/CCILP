@@ -42,16 +42,19 @@ export default function useConstancy(type: string) {
   };
 
   const create =
-      async ({idCompany, href}: {idCompany: number, href: string}) => {
+      async ({company, title}:{company:Empresa, title: string}) => {
     try {
       setData(prev => ({...prev, loading: true}));
       const data = await fetchDataFromAPI({
         url: `/${type}`,
         method: 'POST',
-        data: {data: {empresa: {id: idCompany}, user: {id: getCookie('id')}}},
+        data: {data: {empresa: {id: company.id}, user: {id: getCookie('id')}}},
         token: getCookie('jwt')
       });
-      window.open(href+'&constancyID='+data.data.id, '_blank')
+
+      localStorage.removeItem('constancy');
+      localStorage.setItem('constancy', JSON.stringify({companies: [company], title}));
+      window.open('/constancies/print?constancyID='+data.data.id, '_blank')
     } catch (err) {
       setData(prev => ({...prev, error: err as Error}))
     } finally {

@@ -1167,14 +1167,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
       'api::sector-desempeno.sector-desempeno'
     > &
       Attribute.Required;
-    NumeroRegistro: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
+    NumeroRegistro: Attribute.String & Attribute.Required;
     FOLIO: Attribute.Integer &
       Attribute.Required &
       Attribute.SetMinMax<

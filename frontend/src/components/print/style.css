@@ -130,11 +130,13 @@ footer section {
 }
 
 button {
- display: block;
- margin: 20px auto;
+ margin: 20px;
  padding: 10px 20px;
  font-size: 16px;
  cursor: pointer;
+ position: absolute;
+ top: 11in;
+ left: 340px;
 }
 
 @media print {

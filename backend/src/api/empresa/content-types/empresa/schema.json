@@ -142,9 +142,8 @@
       "required": true
     },
     "NumeroRegistro": {
-      "type": "integer",
+      "type": "string",
       "required": true,
-      "min": 0,
       "unique": false
     },
     "FOLIO": {

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import useConstancy from "../../hooks/useConstancy"
 import Loading from "../Loading"
+import type { Empresa } from "../../types/types"
 
 export default function FormConstancy({ type }: { type: string }) {
   const { loading, error, companies, getCompaniesByRTN, create } = useConstancy(type)
@@ -24,6 +25,11 @@ export default function FormConstancy({ type }: { type: string }) {
     event.preventDefault();
     getCompaniesByRTN({ rtn });
   };
+
+  const handlePrint = ({company, title}:{company:Empresa,title:string}) => {
+    create({ company, title });
+  }
+
   if (error?.message) {
     return <p className="fw-bold">{error.message}</p>
   }
@@ -84,7 +90,7 @@ export default function FormConstancy({ type }: { type: string }) {
                           </div>
                         </div>
                         <br />
-                        <button onClick={() => create({ idCompany: company.id, href: `/constancies/print?title=${constancies.find(item => item.type === type)?.title || ''}&nombreEmpresa=${company?.NombreEmpresa}&nombreComercial=${company?.NombreComercial}&representanteLegal=${company?.NombreRepresentante}&tipoDenominacion=${company?.denominacion}&numeroRegistro=${company?.NumeroRegistro}&folio=${company?.FOLIO}&tomo=${company?.TOMO}&rtn=${company?.RTN}` })} className="btn btn-primary">Crear Constancia</button>
+                        <button onClick={() => handlePrint({company, title: constancies.find(item=>item.type === type)?.title || 'N/A'})} className="btn btn-primary">Crear Constancia</button>
                       </div>
                     </div>
                   </div>
