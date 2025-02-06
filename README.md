@@ -1,31 +1,36 @@
-<a name="readme-top"></a>
+<a id="readme-top"></a>
 <div align="center">
 <h1> Sistema de gestión de Constancias, Empresas, Proyectos y Emprendedores para CCILP 🌟</h1> 
 
 Sistema diseñado para facilitar lo que es la impresión de los distintos tipos de constancias manejados y la gestión de empresas y emprendedores afiliados.
 </div>
 
-
 ## Características principales
 
-- **Contratación Freelance**: Conoce los detalles de cómo contratar freelancers para tus proyectos.
-- **Venta de Plantillas**: Explora una amplia variedad de plantillas disponibles para su compra.
-- **Información sobre el Proyecto**: Accede a detalles sobre el proyecto, su misión y visión.
+- **Extensión de Constancias**: Crear constancias, ya sea de registro, renovación, etc. Para luego imprimirlas y darselas a los clientes.
+- **Empresas Afiliadas**: Registro y edisión de datos de todas las empresas afiliadas a la CCILP.
+- **Parametrización de Datos Generales**: Como ser correos de la institución, nombre del director, etc.
+- **Emprendedores, Proyectos y  Programas**: Registro de emprendedores, asi como sus proyectos y los programas en el que participan.
+- **Denominaciones, Filiales, Ramas, etc.**: Datos necesarios para la impresión de constancias, completado de datos para los registros de las empresas.
+- **Usuarios**: Administración y gestión de los usuarios que pueden acceder al módulo no administrativo y extender constancias.
 
 
-<details><summary>Tabla de contenidos</summary>
+<details>
+<summary>Tabla de contenidos</summary>
+
 - [Plataforma de Contratación Freelance y Venta de Plantillas 🌟](#plataforma-de-contratación-freelance-y-venta-de-plantillas-)
   - [Características principales](#características-principales)
-  - [VPS](#vps)
-    - [Prerequisitos](#prerequisitos)
-  - [Contribuir al proyecto](#contribuir-al-proyecto)
-  - [🚀 Estructura del Proyecto](#-estructura-del-proyecto)
-  - [🧞 Comandos](#-comandos)
+  - [🖥️ Configuración VPS HOSTINGER](#️-configuración-vps-hostinger)
+    - [Primeros Pasos](#primeros-pasos)
+    - [Configuración de Entorno](#configuración-de-entorno)
+  - [🔄 Nginx](#-nginx)
+  - [☁️ Cloudflare](#️-cloudflare)
+  - [🔒 Certbot SSL](#-certbot-ssl)
   - [🛠️ Stack](#️-stack)
 
 </details>
 
-## Configuración VPS
+## 🖥️ Configuración VPS HOSTINGER
 ### Primeros Pasos
 - Instalar el sistema operativo Ubuntu.
 - Acceder al VPS mediante CMD:
@@ -41,22 +46,21 @@ sudo apt update
 sudo apt upgrade
 ~~~
 
-
 ### Configuración de Entorno
-- Crear los directorios para los entorno de producción y desarrollo:
-~~~
-mkdir CCILP_DEV
-mkdir CCILP_PROD
-~~~
-- Clonar repositorio de github en ambas carpetas:
+
+- Clonar repositorio de github para cada ambiente y renombrar carpeta:
 ~~~
 // Para desarrollo.
-cd CCILP_DEV
-git clone https://github.com/alejandrojosue/CCILP.git
+git clone --branch nombre-de-la-rama-dev --single-branch https://github.com/alejandrojosue/CCILP.git
+mv CCILP CCILP_DEV
+//
+// Para Pruebas.
+git clone --branch nombre-de-la-rama-qa --single-branch https://github.com/alejandrojosue/CCILP.git
+mv CCILP CCILP_QA
 //
 // Para producción.
-cd CCILP_DEV
-git clone https://github.com/alejandrojosue/CCILP.git
+git clone --branch nombre-de-la-rama-prod --single-branch https://github.com/alejandrojosue/CCILP.git
+mv CCILP CCILP_PROD
 ~~~
 - Instalar `Docker` para creación de base de datos de `PostgreSQL`.
  - Primero  instale algunos paquetes de requisitos previos que permitan a apt usar paquetes a través de HTTPS:
@@ -83,10 +87,13 @@ sudo apt install docker-ce
 ~~~
 // Descargamos la imagen de postgre versión 15
 docker pull postgres:15
-// Creamos un contenedor para desarrollo y otro para producción
+// Creamos un contenedor para desarrollo, pruebas y otro para producción
 docker run --name postgre_dev -e POSTGRES_USER=mi_user_dev -e POSTGRES_PASSWORD=mi_pass_dev -e POSTGRES_DB=db_dev -p 5432:5432 -d postgres:15
 //
-docker run --name postgre_prod -e POSTGRES_USER=mi_user_prod -e POSTGRES_PASSWORD=mi_pass_prod -e POSTGRES_DB=db_prod -p 5433:5432 -d postgres:15
+// Creamos un contenedor para desarrollo, pruebas y otro para producción
+docker run --name postgre_qa -e POSTGRES_USER=mi_user_qa -e POSTGRES_PASSWORD=mi_pass_qa -e POSTGRES_DB=db_qa -p 5434:5432 -d postgres:15
+//
+docker run --name postgre_prod -e POSTGRES_USER=mi_user_prod -e POSTGRES_PASSWORD=mi_pass_prod -e POSTGRES_DB=db_prod -p 5435:5432 -d postgres:15
 ~~~
 - Ahora, para ejecutar nuestros proyectos, instalaremos ``NVM``  ver [documentación oficial](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 ~~~
@@ -108,19 +115,25 @@ nvm install --lts
 ~~~
 import { defineConfig } from 'astro/config';
 import react from "@astrojs/react";
+//production
+import node from "@astrojs/node";
 export default defineConfig({
   output: 'server',
   devToolbar: {
     enabled: false
   },
   server: {
-    port: 3000, // 3000 DEV, 3001 PROD
+    port: 3000, // 3000 DEV, 3001 QA, 3002 PROD
     host: '0.0.0.0'
   },
-  integrations: [react()]
+  integrations: [react()],
+  // production
+  adapter: node({
+    mode: "standalone"
+  })
 });
 ~~~
-- Ahora que contamos con NodeJS, instalamos los paquetes que nuestro proyecto nesecita:
+- Ahora que contamos con NodeJS, instalamos los paquetes que nuestro proyecto necesita:
 ~~~
 cd frontend
 npm install
@@ -141,6 +154,15 @@ npm install pm2 -g
  cd ../frontend
  pm2 start npm --name frontend_dev -- run dev
  ~~~
+   - Modo QA
+ ~~~
+ cd CCILP_QA/backend
+ npm run build
+ pm2 start npm --name backend_qa -- run start
+ cd ../frontend
+ npm run build
+ pm2 start npm --name frontend_qa -- run start
+ ~~~
   - Modo Producción
  ~~~
  cd CCILP_PROD/backend
@@ -150,16 +172,49 @@ npm install pm2 -g
  npm run build
  pm2 start npm --name frontend_prod -- run start
  ~~~
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
+## 🔄 Nginx
+- Instalación
+~~~
+sudo apt update
+sudo apt install nginx -y
+~~~
+- Verificar instalación
+~~~
+systemctl status nginx
+~~~
+- Si está inactivo, inícialo:
+~~~
+sudo systemctl start nginx
+~~~
+- Para habilitalo al iniciar el sistema
+~~~
+sudo systemctl enable nginx
+~~~
+- Configuración para dominio: [Ver tutorial](https://www.youtube.com/watch?v=qMfptwXpVmg)
+
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+
+## ☁️ Cloudflare
+Curso de Cloudflare con midudev [Ver tutorial](https://www.youtube.com/watch?v=I2mv4456l74)
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+
+## 🔒 Certbot SSL
+Visitar [Documentación oficial](https://certbot.eff.org/instructions?ws=nginx&os=pip)
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ## 🛠️ Stack
 
 - [![Astro][astro-badge]][astro-url] - El framework web para sitios web impulsados por contenido.
 - [![Typescript][typescript-badge]][typescript-url] - JavaScript con sintaxis para tipos.
-- [![react JS][tailwind-badge]][tailwind-url] - Librería de frontend que agiliza el implementar funcionalidades reactivas.
+- [![react JS][react-badge]][react-url] - Librería de frontend que agiliza el implementar funcionalidades reactivas.
 - [![Strapi][strapi-badge]][strapi-url] - Headless CMS para gestionar contenido.
 - [![Bootstrap][bootstrap-badge]][bootstrap-url] - Un framework CSS de utilidades para construir diseños personalizados rápidamente.
+- [![Cloudflare][cloudflare-badge]][cloudflare-url] - CDN y protección para sitios web con firewall y optimización.
+- [![Nginx][nginx-badge]][nginx-url] - Servidor web y proxy inverso de alto rendimiento.
+- [![Certbot][certbot-badge]][certbot-url] - Cliente de Let's Encrypt para automatizar certificados SSL/TLS.
+
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
@@ -168,6 +223,9 @@ npm install pm2 -g
 [react-url]: https://es.react.dev/
 [strapi-url]: https://github.com/strapi/strapi
 [bootstrap-url]: https://getbootstrap.com/
+[cloudflare-url]: https://www.cloudflare.com/
+[nginx-url]: https://nginx.org/
+[certbot-url]: https://certbot.eff.org/
 
 [astro-badge]: https://img.shields.io/badge/Astro-fff?style=for-the-badge&logo=astro&logoColor=bd303a&color=352563
 [typescript-badge]: https://img.shields.io/badge/Typescript-007ACC?style=for-the-badge&logo=typescript&logoColor=white&color=blue
@@ -175,6 +233,9 @@ npm install pm2 -g
 [animations-badge]: https://img.shields.io/badge/@alejandrojosue/tailwind-animations-ff69b4?style=for-the-badge&logo=node.js&logoColor=white&color=blue
 [strapi-badge]: https://img.shields.io/badge/Strapi-000000?style=for-the-badge&logo=strapi&logoColor=2e7df7&color=black
 [bootstrap-badge]: https://img.shields.io/badge/bootstrap-bage?style=for-the-badge&logo=bootstrap&logoColor=white&color=673ab8
+[cloudflare-badge]: https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white
+[nginx-badge]: https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white
+[certbot-badge]: https://img.shields.io/badge/Certbot-333?style=for-the-badge&logo=letsencrypt&logoColor=white
 
 [contributors-url]: https://github.com/alejandrojosue/TiendaPlantillas-frontend/graphs/contributors
 [contributors-shield]: https://img.shields.io/github/contributors/alejandrojosue/TiendaPlantillas-frontend.svg?style=for-the-badge
@@ -184,6 +245,8 @@ npm install pm2 -g
 [stars-url]: https://github.com/alejandrojosue/TiendaPlantillas-frontend/stargazers
 [issues-shield]: https://img.shields.io/github/issues/alejandrojosue/TiendaPlantillas-frontend.svg?style=for-the-badge
 [issues-url]: https://github.com/alejandrojosue/TiendaPlantillas-frontend/issues
+
+
 
 
 <!-- 
