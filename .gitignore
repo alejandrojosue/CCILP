@@ -17,6 +17,8 @@ backend/.env.dev
 frontend/.env.dev
 backend/.env.prod
 frontend/.env.prod
+backend/.env.qa
+frontend/.env.qa
 
 # logs
 npm-debug.log*
