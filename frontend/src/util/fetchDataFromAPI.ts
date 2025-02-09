@@ -32,7 +32,6 @@ export const fetchDataFromAPI =
               };
 
               if (data) requestOptions.body = JSON.stringify(data);
-
               const response =
                   await fetch(PUBLIC_STRAPI_HOST + url, requestOptions);
               const errorList: {[key: string]: () => void} = {

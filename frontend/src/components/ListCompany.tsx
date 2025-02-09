@@ -9,6 +9,7 @@ export default function List(){
  const [filter, setFilter] = useState("");
  useEffect(()=>{
   getCompanies()
+  console.log(data) 
  },[]);
  const filteredCompanies =  data?.empresas?.filter((item) =>
   item.RTN.includes(filter)
