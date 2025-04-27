@@ -201,7 +201,11 @@ Curso de Cloudflare con midudev [Ver tutorial](https://www.youtube.com/watch?v=I
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ## 🔒 Certbot SSL
-Visitar [Documentación oficial](https://certbot.eff.org/instructions?ws=nginx&os=pip)
+### Renovación
+-  Primero lo que se debe realizar es ir a cloudflare, en el DNS, desactivar la nube naranja.
+-  Segundo, ejecutar el comando `sudo certbot renew`
+Para más información, visitar [Documentación oficial](https://certbot.eff.org/instructions?ws=nginx&os=pip)
+
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ## 🛠️ Stack
