@@ -8,6 +8,40 @@ export const CompaniesMap = (data:any): Empresa[] =>{
 }
 
 export const CompanyMap = (id:number, attributes: any) : Empresa =>{
+ if(!attributes){
+  // @ts-ignore
+  return {
+   id,
+   Activo: false,
+   filial: {},
+   NombreEmpresa: "",
+   NombreComercial: "",
+   Direccion: "",
+   TelefonoFax: "",
+   Celular: "",
+   CorreoElectronico: "",
+   RTN: "",
+   NombreRepresentante: "",
+   NombreSubgerente: "",
+   NombreContador: "",
+   denominacion: {},
+   NombreSocios: "",
+   NumeroEscritura: 0,
+   FechaConstitucion: new Date(),
+   TomoMercantil: 0,
+   FechaMercantil: new Date(),
+   LugarDeclaracion: "",
+   NumeroEmpleados: 0,
+   ActividadEmpresarial: "",
+   CapitalMaximo: 0,
+   sector_desempenos: [],
+   FOLIO: 0,
+   categoria:{},
+   PagoAfiliacion: 0,
+   CuotaMensual: 0,
+   Ramas:[]
+  }
+ }
  const {
   Activo,
   tipo_tramite,
@@ -45,6 +79,7 @@ export const CompanyMap = (id:number, attributes: any) : Empresa =>{
   ramas,
   createdAt
  } = attributes
+
  const Company: Empresa = {
   id,
   Activo,

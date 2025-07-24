@@ -36,7 +36,22 @@ export const useCompany = () => {
     setData(prev => ({...prev, loading: true}))
     try {
       const data = await fetchDataFromAPI({
-        url: '/empresas?populate=*',
+        url: '/empresas?populate=*&pagination[limit]=200',
+        token: getCookie('jwt')
+      });      
+      setData(prev=>({...prev, empresas: CompaniesMap(data?.data)}))
+    } catch (error) {
+      setData(prev => ({...prev, error: error as Error}))
+    }finally{
+      setData(prev=>({...prev, loading: false}))
+    }
+  }
+
+  const getCompaniesByRTN = async ({filter}:{filter:string}) => {
+    setData(prev => ({...prev, loading: true}))
+    try {
+      const data = await fetchDataFromAPI({
+        url: `/empresas?populate=*&pagination[limit]=200&filters[RTN][$contains]=${filter}`,
         token: getCookie('jwt')
       });      
       setData(prev=>({...prev, empresas: CompaniesMap(data?.data)}))
@@ -87,5 +102,5 @@ export const useCompany = () => {
      setFields(prev=>({...prev, loading: false}))
     }
   }
-  return {...fields, data, getFields, getCompanies, getById}
+  return {...fields, data, getFields, getCompanies, getById, getCompaniesByRTN}
 }

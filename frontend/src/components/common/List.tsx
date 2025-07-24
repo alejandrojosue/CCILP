@@ -11,7 +11,6 @@ export default function List({ type }: { type: string }) {
     get()
   }, []);
 
-
   if (error?.message) {
     return <h1 className="text-danger my-5">{error.message}</h1>
   }
