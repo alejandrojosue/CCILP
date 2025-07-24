@@ -15,7 +15,7 @@ export default function useConstancy(type: string) {
     try {
       setData(prev => ({...prev, loading: true}))
       const values = await fetchDataFromAPI({
-        url: `/${type}?populate=empresa.tipo_tramite,empresa.ramas,empresa.Activo,empresa.filial, empresa.denominacion,empresa.sector_desempenos, empresa.categoria`,
+        url: `/${type}?populate=empresa.tipo_tramite,empresa.ramas,empresa.Activo,empresa.filial, empresa.denominacion,empresa.sector_desempenos, empresa.categoria&pagination[limit]=1000&sort=createdAt:desc`,
         token: getCookie('jwt')
       });
       setData(prev => ({...prev, constancies: RegistersMap(values.data)}))
