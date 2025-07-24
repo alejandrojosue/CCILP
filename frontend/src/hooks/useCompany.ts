@@ -102,5 +102,5 @@ export const useCompany = () => {
      setFields(prev=>({...prev, loading: false}))
     }
   }
-  return {...fields, data, getFields, getCompanies, getById, getCompaniesByRTN}
+  return {...fields, data, setData, getFields, getCompanies, getById, getCompaniesByRTN}
 }

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useCompany } from "../hooks/useCompany";
 import { COLUMNS_COMPANIES } from "../constants/datagridHeaders";
 import DataTable from "./DataTable";
+import type { Empresa } from "../types/types";
 
 export default function List() {
 
-  const { data, getCompanies, getCompaniesByRTN } = useCompany()
+  const { data, getCompanies, setData, getCompaniesByRTN } = useCompany()
   const [filter, setFilter] = useState("");
+  const [dataCaching, setDataCaching] = useState<Empresa[]>([])
   const filteredCompanies = data?.empresas?.filter((item) =>
     item.RTN.includes(filter)
   );
@@ -15,9 +17,16 @@ export default function List() {
   }, []);
 
   useEffect(() => {
-    if (filter.length > 6 && filter.length <= 14 && !filteredCompanies.length && !data.loading) {
+    if (!dataCaching.length) setDataCaching(data.empresas)
+  }, [data]);
+
+  useEffect(() => {
+    if (filter.length <= 14 && !filteredCompanies.length && !data.loading) {
       getCompaniesByRTN({ filter });
-    }
+    } else setData(prev=>({ ...prev, empresas: dataCaching}))
+    
+
+      
   }, [filter]);
 
 
