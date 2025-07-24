@@ -1,5 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
-import { esES } from '@mui/x-data-grid/locales';
+// import * as locales from '@mui/x-data-grid/locales';
+// const { esES } = locales;
 
 interface Props {
   columns: any[]
@@ -33,7 +34,7 @@ export default function DataTable({ columns, rows, loading }: Props) {
       <DataGrid
         rows={rows}
         columns={columns.concat(ACTION_COLUMNS)}
-        localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+        // localeText={esES.components.MuiDataGrid.defaultProps.localeText}
         loading={loading}
         initialState={{
           pagination: {
