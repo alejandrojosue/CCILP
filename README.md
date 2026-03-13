@@ -18,15 +18,19 @@ Sistema diseñado para facilitar lo que es la impresión de los distintos tipos 
 <details>
 <summary>Tabla de contenidos</summary>
 
-- [Plataforma de Contratación Freelance y Venta de Plantillas 🌟](#plataforma-de-contratación-freelance-y-venta-de-plantillas-)
-  - [Características principales](#características-principales)
-  - [🖥️ Configuración VPS HOSTINGER](#️-configuración-vps-hostinger)
-    - [Primeros Pasos](#primeros-pasos)
-    - [Configuración de Entorno](#configuración-de-entorno)
-  - [🔄 Nginx](#-nginx)
-  - [☁️ Cloudflare](#️-cloudflare)
-  - [🔒 Certbot SSL](#-certbot-ssl)
-  - [🛠️ Stack](#️-stack)
+- [Características principales](#características-principales)
+- [🖥️ Configuración VPS HOSTINGER](#️-configuración-vps-hostinger)
+  - [Primeros Pasos](#primeros-pasos)
+  - [Configuración de Entorno](#configuración-de-entorno)
+  - [Configuración de Proyecto](#configuración-de-proyecto)
+  - [⚠️ Troubleshooting](#️-troubleshooting)
+    - [Error: No hay conexción SSH mediante terminal](#error-no-hay-conexción-ssh-mediante-terminal)
+    - [🚑 Solución rápida](#-solución-rápida)
+- [🔄 Nginx](#-nginx)
+- [☁️ Cloudflare](#️-cloudflare)
+- [🔒 Certbot SSL](#-certbot-ssl)
+  - [Renovación](#renovación)
+- [🛠️ Stack](#️-stack)
 
 </details>
 
@@ -172,6 +176,74 @@ npm install pm2 -g
  npm run build
  pm2 start npm --name frontend_prod -- run start
  ~~~
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+
+### ⚠️ Troubleshooting
+
+#### Error: No hay conexción SSH mediante terminal
+
+Primero hay que abrir la terminal de Hostinger para verificar el estado del servicio SSH con:
+
+~~~
+sudo systemctl status ssh
+~~~
+
+Puede aparecer un error similar a este:
+
+~~~
+× ssh.service - OpenBSD Secure Shell server
+Loaded: loaded (/usr/lib/systemd/system/ssh.service)
+Active: failed (Result: exit-code)
+Process: ExecStartPre=/usr/sbin/sshd -t (code=exited, status=1/FAILURE)
+~~~
+
+Este mensaje indica que el servicio SSH no puede iniciarse porque la verificación de configuración (`sshd -t`) detectó un problema.
+
+Para identificar el error exacto se debe ejecutar:
+
+~~~
+sudo sshd -t
+~~~
+
+Si el resultado es:
+
+~~~
+sshd: no hostkeys available -- exiting
+~~~
+
+Significa que el servidor no tiene **host keys**, que son claves criptográficas que identifican al servidor durante una conexión SSH. Sin estas claves, el servicio SSH no puede iniciarse por motivos de seguridad.
+
+Este problema puede ocurrir si se eliminaron accidentalmente archivos dentro del directorio `/etc/ssh` o si el sistema fue restaurado o reconfigurado.
+
+#### 🚑 Solución rápida
+
+Regenerar automáticamente las claves del servidor:
+
+~~~
+sudo ssh-keygen -A
+~~~
+
+Este comando crea nuevamente las claves necesarias dentro de `/etc/ssh`.
+
+Luego iniciar el servicio nuevamente:
+
+~~~
+sudo systemctl start ssh
+~~~
+
+Finalmente verificar que el servicio esté funcionando correctamente:
+
+~~~
+sudo systemctl status ssh
+~~~
+
+Si todo está correcto, el estado debería aparecer como:
+
+~~~
+Active: active (running)
+~~~
+
+Ahora solo resta probar conectarse nuevamente al VPS por SSH mediante la terminal.
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ## 🔄 Nginx
