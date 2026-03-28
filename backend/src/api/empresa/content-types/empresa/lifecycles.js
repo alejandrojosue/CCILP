@@ -63,25 +63,39 @@ module.exports = {
 
             const { data } = e.params;
 
-            if (!data.denominacion.connect[0] && !oldData.denominacion) {
-                throw new ApplicationError("La denominación es obligatoria");
-            }
+            // Helper para validar relaciones obligatorias
+            const validateRelation = (field, label) => {
+                const newConnect = data[field]?.connect || [];
+                const newDisconnect = data[field]?.disconnect || [];
 
-            if (!data.tipo_tramite.connect[0] && !oldData.tipo_tramite) {
-                throw new ApplicationError("El tipo de trámite es obligatorio");
-            }
+                // calcular cuántos había antes
+                let oldCount = Array.isArray(oldData[field])
+                    ? oldData[field].length
+                    : oldData[field]
+                        ? 1
+                        : 0;
 
-            if (!data.filial.connect[0] && !oldData.filial) {
-                throw new ApplicationError("La filial es obligatoria");
-            }
+                // aplicar disconnect
+                oldCount = Math.max(0, oldCount - newDisconnect.length);
 
-            if (!data.categoria.connect[0] && !oldData.categoria) {
-                throw new ApplicationError("La categoría es obligatoria");
-            }
+                // aplicar connect
+                const finalCount = oldCount + newConnect.length;
 
-            if (!data.sector_desempenos.connect[0] && !oldData.sector_desempenos.length) {
-                throw new ApplicationError("El sector de desempeño es obligatorio");
-            }
+                if (finalCount === 0) {
+                    throw new ApplicationError(`${label} es obligatorio`);
+                }
+            };
+
+
+
+
+            validateRelation("denominacion", "La denominación");
+            validateRelation("tipo_tramite", "El tipo de trámite");
+            validateRelation("filial", "La filial");
+            validateRelation("categoria", "La categoría");
+            validateRelation("sector_desempenos", "El sector de desempeño");
+
+
             const newData = e.params.data;
             await strapi.entityService.create('api::bitacora.bitacora', {
                 data: {
@@ -92,7 +106,7 @@ module.exports = {
                 }
             });
         } catch (error) {
-                throw new ApplicationError(error.message);
+            throw new ApplicationError(error.message);
         }
     }
 };
